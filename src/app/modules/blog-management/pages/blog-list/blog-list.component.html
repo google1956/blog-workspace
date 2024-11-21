@@ -1,1 +1,40 @@
-<p>blog-list works!</p>
+<div class="draft-background">
+    <div class="header-title">
+        <h2>Blog</h2>
+    </div>
+    <div class="listing-event">
+        <nz-table #blogs [nzData]="blogList" [nzFrontPagination]="false" [nzLoading]="isLoadingBlogList"
+            [nzTotal]="total" [nzPageSize]="10" [nzPageIndex]="1" (nzQueryParams)="onQueryParamsChange($event)">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th nzWidth="200px">Status</th>
+                    <th nzWidth="200px">Access</th>
+                    <!-- <th nzWidth="60px"></th> -->
+                </tr>
+            </thead>
+            <tbody>
+                @for(blog of blogs.data;track blog){
+                <tr>
+                    <td>
+                        <div class="event-name"> {{blog.title}}
+                        </div>
+                    </td>
+                    <td>{{blog.status}}</td>
+                    <td>{{blog.access}}</td>
+                    <!-- <td>
+                        <button nz-button nzType="text" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
+                            <span nz-icon nzType="more" nzTheme="outline"></span>
+                        </button>
+                        <nz-dropdown-menu #menu="nzDropdownMenu">
+                            <ul nz-menu>
+                                <li nz-menu-item>view</li>
+                            </ul>
+                        </nz-dropdown-menu>
+                    </td> -->
+                </tr>
+                }
+            </tbody>
+        </nz-table>
+    </div>
+</div>

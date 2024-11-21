@@ -7,7 +7,9 @@ import { registerLocaleData } from '@angular/common';
 import vi from '@angular/common/locales/vi';
 import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { BaseUrlInterceptor } from './interceptors/base.interceptor';
 
 registerLocaleData(vi);
 
@@ -15,7 +17,11 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideNzI18n(vi_VN),
-    importProvidersFrom(FormsModule),
+    importProvidersFrom(
+      FormsModule,
+    ),
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
     provideAnimationsAsync(),
-    provideHttpClient()]
+    provideHttpClient(withInterceptorsFromDi())]
 };

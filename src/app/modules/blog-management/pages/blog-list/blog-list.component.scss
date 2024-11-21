@@ -1,0 +1,230 @@
+.draft-background {
+    background-color: var(--background-color);
+    height: 100%;
+
+    .header-title {
+        margin: 0 16px;
+
+        span {
+            font-size: var(--header-h1-font-size);
+        }
+
+        [nz-icon] {
+            font-size: 12px;
+        }
+    }
+
+    .action-bar {
+        // margin: 16px;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 16px;
+
+        .action-filter {
+            //   margin-left: 16px;
+            padding-left: 16px;
+        }
+
+        .bar {
+            display: flex;
+            z-index: 3;
+            position: relative;
+            min-height: 44px;
+            border: 1px solid transparent;
+            box-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
+            border-radius: 24px;
+            width: 690px;
+        }
+
+        .bar:hover {
+            // box-shadow: 0 4px 12px rgba(23, 23, 23, 0.9);
+            box-shadow: 1px 1px 8px 1px #dcdcdc;
+            border-color: transparent;
+        }
+
+        .bar:focus-within {
+            box-shadow: 1px 1px 8px 1px #dcdcdc;
+            outline: none;
+        }
+
+        .search-content {
+            flex: 1;
+            display: flex;
+            padding-left: 14px;
+            padding-right: 4px;
+
+            .prefix-icon {
+                display: flex;
+                align-items: center;
+                height: 46px;
+            }
+
+            .searchbar {
+                height: 44px;
+                border: none;
+                width: 350px;
+                font-size: 16px;
+                outline: none;
+                padding-left: 5px;
+            }
+
+            .suffix-icon {
+                display: flex;
+                flex: 0 0 auto;
+                align-items: center;
+                flex-direction: row;
+                height: 44px;
+
+                .search-close {
+                    background: transparent;
+                    align-items: center;
+                    flex: 1 0 auto;
+                    flex-direction: row;
+                    display: flex;
+                    height: 46px;
+                    padding: 10px;
+                    cursor: pointer;
+                }
+
+                nz-select {
+                    width: 100%;
+                }
+
+                .location-selected {
+                    flex: 1 0 auto;
+                    display: flex;
+                    cursor: pointer;
+                    align-items: center;
+                    border: 0;
+                    background: transparent;
+                    outline: none;
+                    border-left: 1px solid #dcdcdc;
+                    padding: 0 8px;
+                    width: 240px;
+                    line-height: 44px;
+                }
+            }
+
+        }
+
+        .searching {
+            height: 44px;
+            width: 44px;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .create-event-action {
+        text-align: right;
+        padding-right: 16px;
+    }
+}
+
+// [nz-button] {
+//   margin-right: 8px;
+//   margin-bottom: 12px;
+// }
+
+// nz-button-group [nz-button] {
+//   margin-right: 0;
+// }
+
+// nz-input-group {}
+
+.listing-event {
+    margin: 16px;
+
+    .event-name {
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+        cursor: pointer;
+
+        p,
+        h6 {
+            margin: 0;
+        }
+    }
+}
+
+.title {
+    .text-header {
+        font-size: large;
+        font-weight: bold;
+    }
+
+    .text-header-sub {
+        font-size: small;
+    }
+}
+
+///////////////// CALENDAR
+
+/****************************************/
+/* Styling rules, such as font and colors */
+.date-as-calendar {
+    font-variant: normal;
+    font-style: normal;
+    font-weight: normal;
+
+    /* It seems vertical-align: baseline does not work correctly with display: inline-flex. */
+    vertical-align: top;
+
+    color: black;
+    background: var(--background-color);
+
+    border: 1px solid var(--app-c-grey-border);
+    border-radius: 3px;
+    overflow: hidden;
+
+    box-shadow: 2px 2px 2px -2px var(--secondary-color);
+}
+
+.date-as-calendar .day,
+.date-as-calendar .month,
+.date-as-calendar .year {
+    text-align: center;
+    line-height: 1.0;
+}
+
+.date-as-calendar .month {
+    text-transform: uppercase;
+    background: var(--app-c-red);
+    color: var(--background-color);
+}
+
+/****************************************/
+/* Layout rules using position: absolute and pixels. */
+.position-pixels.date-as-calendar {
+    display: inline-block;
+    position: relative;
+    width: 56px;
+    height: 56px;
+}
+
+.position-pixels.date-as-calendar .day,
+.position-pixels.date-as-calendar .month,
+.position-pixels.date-as-calendar .year {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.position-pixels.date-as-calendar .month {
+    top: 0px;
+    font-size: 11px;
+    padding: 4px 0;
+}
+
+.position-pixels.date-as-calendar .day {
+    top: 20px;
+    font-size: 20px;
+}
+
+.position-pixels.date-as-calendar .year {
+    top: 42px;
+    font-size: 12px;
+}
