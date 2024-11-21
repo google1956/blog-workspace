@@ -37,8 +37,8 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private handleJwt(request: HttpRequest<unknown>): HttpRequest<any> {
-    // let oauth = this.appService.getAuthentical()
-    let access_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoiNjczZDY4MGRhMDI2NjhiMGQ4MmE2NmZhIiwidXNlcm5hbWUiOiJpd29tMzUyMCIsImV4cGlyZWQiOjE3MzIyNTAzODE4MDcsImlhdCI6MTczMjA3NzU4MX0.ZjxrP1IFLhmXhOEmEAcICnNGFrosj73_TUxJTrb1OPM' //oauth?.accessToken
+    let oauth = this.appService.getAuthentical()
+    let access_token = oauth?.accessToken
     request.headers.set('Content-Type', 'application/json');
     if (access_token) {
       request.headers.set('Authorization', `Bearer ${access_token}`)

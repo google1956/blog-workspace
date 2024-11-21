@@ -6,7 +6,7 @@ import { AppService } from "./app.service";
 @Injectable({
     providedIn: 'root',
 })
-export class AccountApi {
+export class AuthService {
     constructor(
         private http: HttpClient,
         private readonly appService: AppService
@@ -15,7 +15,7 @@ export class AccountApi {
     }
 
     login(loginRequest: any) {
-        return this.http.post('/account/login', loginRequest)
+        return this.http.post('/auth/login', loginRequest)
     }
 
     logout() {
