@@ -10,6 +10,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { BaseUrlInterceptor } from './interceptors/base.interceptor';
+import { environment } from './../environments/environment';
 
 registerLocaleData(vi);
 
@@ -22,6 +23,7 @@ export const appConfig: ApplicationConfig = {
     ),
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
+    { provide: "API_URL", useValue: environment.apiUrl },
     provideAnimationsAsync(),
     provideHttpClient(withInterceptorsFromDi())]
 };
