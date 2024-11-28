@@ -1,0 +1,124 @@
+.svg-icon {
+    color: #6f7287;
+    font-size: 32px;
+}
+
+.upload-data {
+    position: absolute;
+    background: rgb(255, 255, 255);
+    border: 0.125rem solid rgb(238, 237, 242);
+    border-radius: var(--app-b-border-radius);
+    color: rgb(54, 89, 227);
+    height: 108px;
+    width: 108px;
+    background-color: #fff;
+    top: 50%;
+    left: calc(50% - 54px);
+    transform: translateY(-50%);
+    padding: 5px;
+    cursor: pointer;
+
+    span {
+        margin: auto;
+        padding-top: 24px;
+    }
+}
+
+.upload-data:hover {
+    text-decoration: underline;
+}
+
+.banner {
+    position: relative;
+
+    .overlay {
+        height: 108px;
+        width: 108px;
+        position: absolute;
+        margin: auto;
+        inset: 0;
+        z-index: 1;
+        background-color: rgba(144, 108, 108, 0.2);
+        text-align: center;
+    }
+
+    .overlay>input {
+        display: none;
+    }
+
+    .hero-container {
+        text-align: center;
+        height: 250px;
+        line-height: 160px;
+        background: #364d79;
+        color: #fff;
+
+        img,
+        video {
+            object-fit: cover;
+            width: 100%;
+            height: 250px;
+        }
+    }
+}
+
+.event-about {
+    // border: 1px solid rgb(219, 218, 227);
+    // padding: 24px;
+    // border-radius: var(--app-b-border-radius);
+    // margin-top: 40px;
+
+    .title {
+        font-size: large;
+        font-weight: bold;
+    }
+
+    .sub-title {
+        font-size: small;
+        margin-bottom: 16px;
+    }
+
+    .desc {}
+
+    .detail-editing {
+        position: relative;
+
+        app-text-editor {
+            height: 100%;
+        }
+
+        [nz-button] {
+            margin-bottom: 5px;
+        }
+    }
+
+    .detail-option {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .about-item {
+     
+    }
+    nz-form-item {
+        margin-top: 16px;
+    }
+
+}
+
+.example-handle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #ccc;
+    cursor: move;
+    width: 24px;
+    height: 24px;
+    z-index: 999;
+}
+
+.example-preview {
+    height: 250px;
+    width: 800px;
+    background: #364d79;
+}

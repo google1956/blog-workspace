@@ -9,11 +9,8 @@ const routes: Routes = [
         path: '',
         component: AdminLayoutComponent,
         children: [
-            {
-                path: '',
-                pathMatch: 'full',
-                loadChildren: () => BlogManagementModule
-            }
+            { path: '', pathMatch: 'full', redirectTo: '/admin/blog' },
+            { path: 'blog', loadChildren: () => BlogManagementModule }
         ]
     },
 ];

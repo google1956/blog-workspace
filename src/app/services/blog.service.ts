@@ -16,4 +16,24 @@ export class BlogService {
             }
         })
     }
+
+    getBlogById(blogId: string): Observable<any> {
+        return this.http.get<any>(`/blog/id/${blogId}`)
+    }
+
+    createBlog(payload: any): Observable<any> {
+        return this.http.post<any>('/blog/create', payload)
+    }
+
+    updateBlog(blogId: string, payload: any): Observable<any> {
+        return this.http.put<any>(`/blog/update/${blogId}`, payload)
+    }
+
+    getBlogDetails(blogId: string): Observable<any> {
+        return this.http.get<any>(`/blog/details/id/${blogId}`)
+    }
+
+    updateBlogDetails(blogId: string, payload: any): Observable<any> {
+        return this.http.put<any>(`/blog/details/${blogId}`, payload)
+    }
 }

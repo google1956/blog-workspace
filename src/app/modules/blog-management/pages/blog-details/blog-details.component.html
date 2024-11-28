@@ -1,0 +1,171 @@
+<div nz-row>
+    <div nz-col nzXs="2" nzSm="4" nzMd="4" nzLg="4" nzXl="4"></div>
+    <div nz-col nzXs="20" nzSm="16" nzMd="16" nzLg="16" nzXl="16">
+        <div class="banner">
+            <div class="overlay">
+                <label class="upload-data" for="file-input">
+                    <span nz-icon nzType="upload" nzTheme="outline"></span>
+                    <br />
+                    upload
+                </label>
+                <input type="file" id="file-input" (change)="onUploadBanner($event)" />
+            </div>
+            <div class="hero-container">
+                <img [src]="url" *ngIf="url" width="100%" height="250px" style="object-fit: cover;">
+            </div>
+        </div>
+        <br />
+
+        <form nz-form nzLayout="vertical" [formGroup]="validateForm">
+            <div class="pull-center">
+                <div class="title">
+                    <div class="text-header">
+                        <svg-text class="svg-icon" />
+                        Thông tin
+                    </div>
+                    <!-- <div class="text-header-sub">
+                        addDetailsMessages
+                    </div> -->
+                </div>
+                <div class="content">
+                    <nz-form-item>
+                        <nz-form-label [nzSpan]="null" nzRequired>
+                            <span>Tiêu đề</span>
+                        </nz-form-label>
+                        <nz-form-control [nzSpan]="null" nzErrorTip="Không được để trống">
+                            <input nz-input formControlName="title" />
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-label [nzSpan]="null">
+                            <span>Mô tả</span>
+                        </nz-form-label>
+                        <nz-form-control [nzSpan]="null">
+                            <textarea rows="4" nz-input formControlName="description"></textarea>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+        </form>
+        <nz-divider></nz-divider>
+        <br />
+        @if(blogId){
+        <div class="event-about">
+            <div class="text-header" style="display: flex; justify-content: space-between">
+                <div>
+                    Chi tiết
+                </div>
+                <div>
+                    <button nz-button nzType="link" (click)="addFormControlAbout('text')">
+                        <span nz-icon nzType="plus" nzTheme="outline"></span>
+                        Text
+                    </button>
+                    <!-- <br />
+                    <button nz-button nzType="link" (click)="addFormControlAbout('image')">
+                        <span nz-icon nzType="plus" nzTheme="outline"></span>
+                        Image
+                    </button> -->
+                </div>
+            </div>
+            <form nz-form nzLayout="vertical" [formGroup]="validateAbout">
+                <div class="detail-editing" formArrayName='about'>
+                    <div cdkDropList (cdkDropListDropped)="drop($event)">
+                        @if(aboutFormGroups.controls.length ===0){
+                        <nz-empty nzNotFoundImage="simple"></nz-empty>
+                        }
+                        @for (item of aboutFormGroups.controls; track item;let i = $index) {
+                        <!-- <div class="cdk-item" cdkDrag> -->
+                        <div class="about-item banner" cdkDrag>
+                            <div class="example-handle" cdkDragHandle>
+                                <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
+                                    </path>
+                                    <path d="M0 0h24v24H0z" fill="none"></path>
+                                </svg>
+                            </div>
+                            @if(item.value.type === 'text'){
+                            <div class="example-handle" cdkDragHandle>
+                                <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
+                                    </path>
+                                    <path d="M0 0h24v24H0z" fill="none"></path>
+                                </svg>
+                            </div>
+                            <nz-form-item [formGroupName]="i">
+                                <nz-form-control [nzSpan]="null" nzErrorTip="{{ 'errorTip' }}">
+                                    <textarea rows="7" nz-input formControlName="data"></textarea>
+                                </nz-form-control>
+                            </nz-form-item>
+                            } @else {
+                            <div class="overlay">
+                                <label class="upload-data" [for]="'file-about-image'+i">
+                                    <span nz-icon nzType="upload" nzTheme="outline"></span>
+                                    <br />
+                                    {{'upload'}} {{item.value.type}}
+                                </label>
+                                <input type="file" [id]="'file-about-image'+i"
+                                    (change)="onUploadAboutItemFile($event,i,item.value.type)" />
+                            </div>
+                            <div class="hero-container">
+                                @if(item.value.type==='image'){
+                                <img *ngIf="item.value.data" [src]="item.value.data" width="100%" height="100%">
+                                }
+                                <!-- @else if(item.value.type==='video'){
+                                    <video *ngIf="previewUrl[i]" [src]="previewUrl[i]" width="100%" height="250px"
+                                        style="object-fit: cover;" controls></video>
+                                    <video *ngIf="!previewUrl[i] && item.value.data" [src]="item.value.data" width="100%"
+                                        height="250px" style="object-fit: cover;" controls></video>
+                                    } -->
+                            </div>
+                            <div class="hero-container" *cdkDragPreview>
+                                @if(item.value.type==='image'){
+                                <img *ngIf="item.value.data" [src]="item.value.data" width="100%" height="100%">
+                                <div *ngIf="!item.value.data" class="example-preview"></div>
+                                }
+                                <!-- @else if(item.value.type==='video'){
+                                    <video *ngIf="previewUrl[i]" [src]="previewUrl[i]" width="100%" height="250px"
+                                        style="object-fit: cover;" controls></video>
+                                    <video *ngIf="!previewUrl[i] && item.value.data" [src]="item.value.data" width="100%"
+                                        height="250px" style="object-fit: cover;" controls></video>
+                                    } -->
+                            </div>
+
+                            }
+                        </div>
+
+                        <!-- </div> -->
+
+                        <!-- <p class="txt-error-color">{{ !item.value.data ? ('dataFieldNotSaved' ) : '' }}</p> -->
+
+                        <!-- <br /> -->
+                        <!-- <button nz-button nzBlock nzType="primary" nzDanger (click)="removeFormControlAbout(i)">
+                                <span nz-icon nzType="delete" nzTheme="outline"></span>
+                            </button> -->
+
+                        <!-- @if(isAboutTextItemChanged(i)){ -->
+                        <!-- <div>
+                                <button nz-button nzBlock nzType="primary" nzType="primary" (click)="handleSubmitAbout()">
+                                    {{'save' }}
+                                </button>
+                            </div> -->
+                        <!-- } -->
+                        }
+                    </div>
+                </div>
+            </form>
+        </div>
+        }
+
+        <nz-divider></nz-divider>
+        <div style="text-align: right;">
+            <button nz-button nzType="primary" (click)="blogId ? save():create()"
+                [disabled]="!this.validateForm.valid || !this.validateAbout.valid">
+                {{ blogId? "Save":"Create"}}
+            </button>
+        </div>
+    </div>
+    <div nz-col nzXs="2" nzSm="4" nzMd="4" nzLg="4" nzXl="4"></div>
+</div>

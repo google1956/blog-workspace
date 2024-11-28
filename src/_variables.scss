@@ -1,0 +1,44 @@
+:root {
+    --blue-text-color: rgb(54, 89, 227);
+    --blue-backgroud-color: rgb(54, 89, 227, 0.2);
+    --primary-color: #3659e3;
+    --secondary-color: #111;
+    --background-color: #fff;
+    --logo-text-font-size: 24px;
+
+    --header-h1-font-size: 24px;
+    --logo-text-color: #f05537;
+    --logo-color:#b51515;
+    --header-height: 80px;
+    --primary-menu-text-weight: 600;
+    --primary-menu-text-size: 12px;
+
+    --app-c: #3A3C40;
+    --app-c-border: #D0D3D9;
+    --app-c-blue: #3D84FF;
+    --app-c-red: rgba(255, 0, 0, 1);
+    --app-c-red-border: rgba(255, 0, 0, 0.5);
+    --app-c-green: rgba(76, 175, 80, 1);
+    --app-c-green-border: rgba(76, 175, 80, 0.5);
+
+    --app-c-grey-text: #A1A5AB;
+    --app-c-grey-border: #D0D3D9;
+    --app-c-grey-bg: #EDEFF2;
+    --app-c-shadow-popup: rgba(0, 0, 0, 0.25);
+    --app-checkbox-disabled-bg: #f5f5f5;
+
+    --app-c-grey-bg-88: #EDEFF288;
+    
+    --app-b-border-radius: 12px;
+
+    //localtion picker
+    --location-bg-color: #fff;
+
+    //SCREEN SIZE
+    --small-screen: 576px;
+    --medium-screen: 768px;
+    --large-screen: 992px;
+    --extra-large-screen: 1200px;
+    --extra-extra-large-screen: 1600px;
+
+}

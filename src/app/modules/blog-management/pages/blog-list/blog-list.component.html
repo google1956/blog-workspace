@@ -1,6 +1,9 @@
 <div class="draft-background">
     <div class="header-title">
         <h2>Blog</h2>
+        <div>
+            <button nz-button nzType="primary">Add</button>
+        </div>
     </div>
     <div class="listing-event">
         <nz-table #blogs [nzData]="blogList" [nzFrontPagination]="false" [nzLoading]="isLoadingBlogList"

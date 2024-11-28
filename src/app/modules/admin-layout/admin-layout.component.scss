@@ -69,12 +69,25 @@ nz-header {
     box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
 }
 
-nz-content {
-    margin: 24px;
-}
+// nz-content {
+//     margin: 24px;
+// }
 
 .inner-content {
     padding: 24px;
     background: #fff;
     height: 100%;
+    width: 100%;
+    overflow-y: auto;
+
+    
 }
+
+// .details-content-layout {
+//     height: 100%;
+//     width: 100%;
+//     background-color: #fff;
+//     overflow-y: auto;
+//     padding: 40px;
+//     padding-bottom: 80px;
+// }

@@ -3,6 +3,8 @@
     height: 100%;
 
     .header-title {
+        display: flex;
+        justify-content: space-between;
         margin: 0 16px;
 
         span {
@@ -157,74 +159,4 @@
     .text-header-sub {
         font-size: small;
     }
-}
-
-///////////////// CALENDAR
-
-/****************************************/
-/* Styling rules, such as font and colors */
-.date-as-calendar {
-    font-variant: normal;
-    font-style: normal;
-    font-weight: normal;
-
-    /* It seems vertical-align: baseline does not work correctly with display: inline-flex. */
-    vertical-align: top;
-
-    color: black;
-    background: var(--background-color);
-
-    border: 1px solid var(--app-c-grey-border);
-    border-radius: 3px;
-    overflow: hidden;
-
-    box-shadow: 2px 2px 2px -2px var(--secondary-color);
-}
-
-.date-as-calendar .day,
-.date-as-calendar .month,
-.date-as-calendar .year {
-    text-align: center;
-    line-height: 1.0;
-}
-
-.date-as-calendar .month {
-    text-transform: uppercase;
-    background: var(--app-c-red);
-    color: var(--background-color);
-}
-
-/****************************************/
-/* Layout rules using position: absolute and pixels. */
-.position-pixels.date-as-calendar {
-    display: inline-block;
-    position: relative;
-    width: 56px;
-    height: 56px;
-}
-
-.position-pixels.date-as-calendar .day,
-.position-pixels.date-as-calendar .month,
-.position-pixels.date-as-calendar .year {
-    display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 100%;
-}
-
-.position-pixels.date-as-calendar .month {
-    top: 0px;
-    font-size: 11px;
-    padding: 4px 0;
-}
-
-.position-pixels.date-as-calendar .day {
-    top: 20px;
-    font-size: 20px;
-}
-
-.position-pixels.date-as-calendar .year {
-    top: 42px;
-    font-size: 12px;
 }
