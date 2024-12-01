@@ -34,14 +34,16 @@ export class BlogDetailsComponent implements OnInit {
     tags: [],
   });
 
-
   ngOnInit(): void {
     console.log(this.blogId)
     this.onLoad()
   }
 
+  isLoadingData = false
+  isNoData = false
   onLoad() {
     if (this.blogId) {
+      this.isLoadingData = true
       forkJoin([
         this.blogService.getBlogById(this.blogId),
         this.blogService.getBlogDetails(this.blogId),
@@ -52,8 +54,11 @@ export class BlogDetailsComponent implements OnInit {
           this.setValueBlogForm(blog)
           const blogDetails = res[1].data.blog_details || undefined
           this.setValueBlogDetails(blogDetails)
+          this.isLoadingData = false
         }, error: (err) => {
           console.log(err)
+          this.isLoadingData = false
+          this.isNoData = true
         }
       })
     }

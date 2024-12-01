@@ -58,4 +58,12 @@ export class BlogListComponent implements OnInit {
       },
     })
   }
+
+  create() {
+    return this.router.navigate(['/admin/blog/create'])
+  }
+
+  open(blogId: string) {
+    return this.router.navigate([`/admin/blog/${blogId}`])
+  }
 }

@@ -2,7 +2,7 @@
     <div class="header-title">
         <h2>Blog</h2>
         <div>
-            <button nz-button nzType="primary">Add</button>
+            <button nz-button nzType="primary" (click)="create()">Add</button>
         </div>
     </div>
     <div class="listing-event">
@@ -19,7 +19,7 @@
             <tbody>
                 @for(blog of blogs.data;track blog){
                 <tr>
-                    <td>
+                    <td (click)="open(blog._id || '')">
                         <div class="event-name"> {{blog.title}}
                         </div>
                     </td>

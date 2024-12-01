@@ -1,4 +1,10 @@
-<div nz-row>
+<div nz-row nzJustify="center" *ngIf="isNoData" style="height: 80vh; align-content: center;">
+    <!-- <div nz-col nzXs="2" nzSm="4" nzMd="4" nzLg="4" nzXl="4"></div> -->
+    <div nz-col nzSpan="24">
+        <nz-empty></nz-empty>
+    </div>
+</div>
+<div nz-row *ngIf="!isNoData">
     <div nz-col nzXs="2" nzSm="4" nzMd="4" nzLg="4" nzXl="4"></div>
     <div nz-col nzXs="20" nzSm="16" nzMd="16" nzLg="16" nzXl="16">
         <div class="banner">
