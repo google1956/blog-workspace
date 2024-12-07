@@ -8,6 +8,15 @@ import { Observable } from "rxjs"
 export class BlogService {
     constructor(private http: HttpClient) { }
 
+    getBlogView(page: number | 1, limit: number | 10,): Observable<any> {
+        return this.http.get<any>('/blog/view', {
+            params: {
+                // page: page,
+                // limit: limit,
+            }
+        })
+    }
+
     getBlogListByAdmin(page: number | 1, limit: number | 10,): Observable<any> {
         return this.http.get<any>('/blog/list', {
             params: {

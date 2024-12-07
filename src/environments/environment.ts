@@ -1,5 +1,5 @@
 export const environment = {
-    // apiUrl: 'https://api.sieuve.com',
+    apiUrl: 'https://api.minhhao.tech',
     production: false,
-    apiUrl: 'http://localhost:3333',
+    // apiUrl: 'http://localhost:3333',
 };
