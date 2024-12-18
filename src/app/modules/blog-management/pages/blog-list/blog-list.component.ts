@@ -66,4 +66,18 @@ export class BlogListComponent implements OnInit {
   open(blogId: string) {
     return this.router.navigate([`/admin/blog/${blogId}`])
   }
+
+  public(blogId: string) {
+    this.blogService.updateStatus(blogId, { access: 1, status: 1 }).subscribe({
+      next: (res) => {
+        console.log(res)
+      }, error: (err) => {
+        console.log('something wrong')
+      }
+    })
+  }
+
+  unpublic() {
+
+  }
 }

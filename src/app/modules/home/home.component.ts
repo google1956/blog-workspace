@@ -15,32 +15,32 @@ export class HomeComponent {
   constructor(
     private readonly blogService: BlogService,
   ) {
-    this.blogs = [
-      {
-        id: 1,
-        title: 'Blog Title 1',
-        image: 'https://via.placeholder.com/150',
-        description: 'This is a short description of Blog 1.',
-      },
-      {
-        id: 2,
-        title: 'Blog Title 2',
-        image: 'https://via.placeholder.com/150',
-        description: 'This is a short description of Blog 2.',
-      },
-      {
-        id: 3,
-        title: 'Blog Title 1',
-        image: 'https://via.placeholder.com/150',
-        description: 'This is a short description of Blog 1.',
-      },
-      {
-        id: 4,
-        title: 'Blog Title 2',
-        image: 'https://via.placeholder.com/150',
-        description: 'This is a short description of Blog 2.',
-      },
-    ];
+    // this.blogs = [
+    //   {
+    //     id: 1,
+    //     title: 'Blog Title 1',
+    //     image: 'https://via.placeholder.com/150',
+    //     description: 'This is a short description of Blog 1.',
+    //   },
+    //   {
+    //     id: 2,
+    //     title: 'Blog Title 2',
+    //     image: 'https://via.placeholder.com/150',
+    //     description: 'This is a short description of Blog 2.',
+    //   },
+    //   {
+    //     id: 3,
+    //     title: 'Blog Title 1',
+    //     image: 'https://via.placeholder.com/150',
+    //     description: 'This is a short description of Blog 1.',
+    //   },
+    //   {
+    //     id: 4,
+    //     title: 'Blog Title 2',
+    //     image: 'https://via.placeholder.com/150',
+    //     description: 'This is a short description of Blog 2.',
+    //   },
+    // ];
   }
 
   ngOnInit(): void {
@@ -52,8 +52,9 @@ export class HomeComponent {
     this.blogService.getBlogView(this.pageIndex, this.pageSize).subscribe({
       next: (res) => {
         if (res.data.blogs.length > 0) {
-          this.blogs.push(res.data.blogs)
+          this.blogs.push(...res.data.blogs)
         }
+        console.log(this.blogs)
         this.totalBlogs = res.data.total || 0
       }
       , error: (err) => {

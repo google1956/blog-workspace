@@ -13,7 +13,7 @@
                     <th>Title</th>
                     <th nzWidth="200px">Status</th>
                     <th nzWidth="200px">Access</th>
-                    <!-- <th nzWidth="60px"></th> -->
+                    <th nzWidth="100px"></th>
                 </tr>
             </thead>
             <tbody>
@@ -25,16 +25,26 @@
                     </td>
                     <td>{{blog.status}}</td>
                     <td>{{blog.access}}</td>
-                    <!-- <td>
-                        <button nz-button nzType="text" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
+                    <td>
+                        @if(blog.status == 0 || blog.access == 0){
+                        <button nz-button nzType="text" nzType="primary" (click)="public(blog._id || '')">
+                            Public
+                        </button>
+                        } @else {
+                        <button nz-button nzType="text" nzType="primary">
+                            Unpublic
+                        </button>
+                        }
+
+                        <!-- <button nz-button nzType="text" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
                             <span nz-icon nzType="more" nzTheme="outline"></span>
                         </button>
                         <nz-dropdown-menu #menu="nzDropdownMenu">
                             <ul nz-menu>
-                                <li nz-menu-item>view</li>
+                                <li nz-menu-item>Public</li>
                             </ul>
-                        </nz-dropdown-menu>
-                    </td> -->
+                        </nz-dropdown-menu> -->
+                    </td>
                 </tr>
                 }
             </tbody>

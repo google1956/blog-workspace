@@ -38,6 +38,10 @@ export class BlogService {
         return this.http.put<any>(`/blog/update/${blogId}`, payload)
     }
 
+    updateStatus(blogId: string, payload: any): Observable<any> {
+        return this.http.put<any>(`/blog/status/${blogId}`, payload)
+    }
+
     getBlogDetails(blogId: string): Observable<any> {
         return this.http.get<any>(`/blog/details/id/${blogId}`)
     }
